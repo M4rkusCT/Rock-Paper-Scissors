@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissors game</title>
 </head>
@@ -13,19 +14,19 @@
         <h1>Rock Paper Scissors game</h1>
     </header>
     <main>
-        <form>
-            <input type="radio" name="tool" id="rock" value="1">
-            <label for="rock">Rock</label>
-            <br>
-            <input type="radio" name="tool" id="paper" value="2">
-            <label for="paper">Paper</label>
-            <br>
-            <input type="radio" name="tool" id="scissors" value="3">
-            <label for="scissors">Scissors</label>
-            <br><br>
-            <button type="submit" id="play">Play</button>
-        </form>
+        <div id="tools">
+            <div class="tool">
+                <img src="./img/rock.png" alt="Rock" id="rock" width="150px">
+            </div>
+            <div class="tool">
+                <img src="./img/paper.png" alt="Paper" id="paper" width="150px">
+            </div>
+            <div class="tool">
+                <img src="./img/scissors.png" alt="Scissors" id="scissors" width="150px">
+            </div>
+        </div>
+        <button type="submit" id="play">Play</button>
     </main>
-    <script src="main.js"></script>
+    <script async src="main.js"></script>
 </body>
 </html>
