@@ -1,22 +1,25 @@
 "use strict";
-const tools1 = document.getElementById("tools");
+const selectTools = document.getElementById("tools");
 const play = document.getElementById("play");
-const tools2 = {1:"rock", 2:"paper", 3:"scissors"};
+const reset = document.getElementById("reset");
+const tools = {1:"rock", 2:"paper", 3:"scissors"};
 var userTool = "";
 var color = "";
+var userCont = 0;
+var compCont = 0;
 
-tools1.addEventListener("click", (e) => {
+selectTools.addEventListener("click", (e) => {
     e.preventDefault();
     if(!userTool) {
+        color = e.target;
         userTool = e.target.id;
-        color = e.target.parentElement;
         if(userTool === "rock" || userTool === "paper" || userTool === "scissors") {
             color.style.background =  "green";
         }
     }
-    else {
+    else if(userTool === "rock" || userTool === "paper" || userTool === "scissors") {
         color.style.background = "white";
-        color = e.target.parentElement;
+        color = e.target;
         userTool = e.target.id;
         if(userTool === "rock" || userTool === "paper" || userTool === "scissors") {
             color.style.background =  "green";
@@ -24,57 +27,60 @@ tools1.addEventListener("click", (e) => {
     }
 });
 
-const playGame = (user, ia) => {
-    if(user === "rock" && ia === "paper") {
+const messageResult = (num, comp) => {
+    if(num === 1) {
         Swal.fire({
             icon: 'error',
-            title: 'IA win'
+            title: 'Computer win',
+            text: `The computer chose: ${comp}`
         });
-        color.style.background =  "white";
+        compCont++;
+        document.getElementById("compCont").innerHTML = compCont;
     }
-    else if(user === "paper" && ia === "rock") {
+    else if(num === 2) {
         Swal.fire({
             icon: 'success',
-            title: 'You win'
+            title: 'You win',
+            text: `The computer chose: ${comp}`
         });
-        color.style.background =  "white";
+        userCont++;
+        document.getElementById("userCont").innerHTML = userCont;
     }
-    else if(user === "paper" && ia === "scissors") {
+    else {
         Swal.fire({
-            icon: 'error',
-            title: 'IA win'
+            title: 'Tie',
+            text: `The computer chose: ${comp}`
         });
-        color.style.background =  "white";
     }
-    else if(user === "scissors" && ia === "paper") {
-        Swal.fire({
-            icon: 'success',
-            title: 'You win'
-        });
-        color.style.background =  "white";
+}
+
+const playGame = (user, comp, color) => {
+    if(user === "rock" && comp === "paper" || user === "paper" && comp === "scissors" || user === "scissors" && comp === "rock") {
+        messageResult(1, comp);
     }
-    else if(user === "scissors" && ia === "rock") {
-        Swal.fire({
-            icon: 'error',
-            title: 'IA win',
-        });
-        color.style.background =  "white";
+    else if(user === "paper" && comp === "rock" || user === "scissors" && comp === "paper" || user === "rock" && comp === "scissors") {
+        messageResult(2, comp);
     }
-    else if(user === "rock" && ia === "scissors") {
-        Swal.fire({
-            icon: 'success',
-            title: 'You win'
-        });
-        color.style.background =  "white";
+    else {
+        messageResult(3, comp);
     }
+    color.style.background =  "white";
+    userTool = "";
+    compTool = "";
 }
 
 play.addEventListener("click", (e) => {
     e.preventDefault();
     if(userTool) {
         let numTool = Math.floor(Math.random() * 3) + 1;
-        let iaTool =  tools2[numTool];
-        playGame(userTool, iaTool);
+        let compTool =  tools[numTool];
+        playGame(userTool, compTool, color);
     }
     else alert("You have to choose a tool");
+});
+
+reset.addEventListener("click", (e) => {
+    e.preventDefault();
+    document.getElementById("userCont").innerHTML = 0;
+    document.getElementById("compCont").innerHTML = 0;
 });

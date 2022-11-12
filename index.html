@@ -7,25 +7,30 @@
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Rock Paper Scissors game</title>
+    <title>Rock Paper Scissors Game</title>
 </head>
 <body>
     <header>
-        <h1>Rock Paper Scissors game</h1>
+        <h1>Rock Paper Scissors Game</h1>
     </header>
     <main>
+        <div>
+            <h2>Scoreboard</h2>
+            <div id="scoreboard">
+                <p>You <span id="userCont">0</span> |  <span id="compCont">0</span> Comp</p>
+            </div>
+        </div>
+        <br>
         <div id="tools">
-            <div class="tool">
+            <div id="selecTool">
                 <img src="./img/rock.png" alt="Rock" id="rock" width="150px">
-            </div>
-            <div class="tool">
                 <img src="./img/paper.png" alt="Paper" id="paper" width="150px">
-            </div>
-            <div class="tool">
                 <img src="./img/scissors.png" alt="Scissors" id="scissors" width="150px">
             </div>
         </div>
+        <br>
         <button type="submit" id="play">Play</button>
+        <button type="submit" id="reset">Reset</button>
     </main>
     <script async src="main.js"></script>
 </body>
