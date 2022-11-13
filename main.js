@@ -16,6 +16,7 @@ selectTools.addEventListener("click", (e) => {
         if(userTool === "rock" || userTool === "paper" || userTool === "scissors") {
             color.style.background =  "green";
         }
+        else userTool = "";
     }
     else if(userTool === "rock" || userTool === "paper" || userTool === "scissors") {
         color.style.background = "white";
@@ -24,6 +25,7 @@ selectTools.addEventListener("click", (e) => {
         if(userTool === "rock" || userTool === "paper" || userTool === "scissors") {
             color.style.background =  "green";
         }
+        else userTool = "";
     }
 });
 
@@ -65,8 +67,8 @@ const playGame = (user, comp, color) => {
         messageResult(3, comp);
     }
     color.style.background =  "white";
-    userTool = "";
-    compTool = "";
+    user = "";
+    comp = "";
 }
 
 play.addEventListener("click", (e) => {
@@ -83,4 +85,6 @@ reset.addEventListener("click", (e) => {
     e.preventDefault();
     document.getElementById("userCont").innerHTML = 0;
     document.getElementById("compCont").innerHTML = 0;
+    userCont = 0;
+    compCont = 0;
 });
