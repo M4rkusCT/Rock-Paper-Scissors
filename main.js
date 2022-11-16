@@ -2,11 +2,11 @@
 const selectTools = document.getElementById("tools");
 const play = document.getElementById("play");
 const reset = document.getElementById("reset");
-const tools = {1:"rock", 2:"paper", 3:"scissors"};
-var userTool = "";
-var color = "";
-var userCont = 0;
-var compCont = 0;
+const tools = ["rock","paper","scissors"];
+let userTool = "";
+let color = "";
+let userCont = 0;
+let compCont = 0;
 
 selectTools.addEventListener("click", (e) => {
     e.preventDefault();
@@ -74,8 +74,7 @@ const playGame = (user, comp, color) => {
 play.addEventListener("click", (e) => {
     e.preventDefault();
     if(userTool) {
-        let numTool = Math.floor(Math.random() * 3) + 1;
-        let compTool =  tools[numTool];
+        let compTool =  tools[Math.floor(Math.random() * tools.length)];
         playGame(userTool, compTool, color);
     }
     else alert("You have to choose a tool");
